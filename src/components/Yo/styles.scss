@@ -1,0 +1,11 @@
+@import "../../colors";
+
+.yo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  .yo__heading {
+    color: $blue;
+  }
+}
