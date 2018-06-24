@@ -1,3 +1,5 @@
+@import "~@material/typography/mdc-typography";
+
 @import "../../colors";
 
 .yo {
@@ -6,6 +8,7 @@
   justify-content: center;
 
   .yo__heading {
-    color: $blue;
+    @extend .mdc-typography--headline1;
+    color: $primary;
   }
 }

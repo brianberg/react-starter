@@ -14,6 +14,7 @@
     "@types/react": "^16.0.36",
     "@types/react-dom": "^16.0.3",
     "@types/webpack-env": "^1.13.5",
+    "material-components-web": "^0.36.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -24,6 +25,7 @@
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "glob": "^7.1.2",
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^3.0.6",
     "node-sass": "^4.7.2",

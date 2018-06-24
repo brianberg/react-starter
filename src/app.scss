@@ -1,6 +1,8 @@
 @import "./colors.scss";
 
+@import "~@material/theme/mdc-theme";
+
 body {
   font-family: "Roboto", "Arial", sans-serif;
-  background-color: $blue-gray;
+  background-color: $background;
 }

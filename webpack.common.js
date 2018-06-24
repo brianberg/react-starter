@@ -1,4 +1,5 @@
 const path    = require("path");
+const glob    = require("glob");
 const webpack = require("webpack");
 
 // Plugins
@@ -41,10 +42,29 @@ module.exports = {
             "css-loader",
             {
               loader  : "sass-loader",
+              options : {
+                includePaths : ['node_modules', 'node_modules/@material/*']
+                  .map((d) => path.join(__dirname, d))
+                  .map((g) => glob.sync(g))
+                  .reduce((a, c) => a.concat(c), []),
+                importer : mdcStyleImporter,
+              }
             }
           ],
           fallback : "style-loader",
         }),
+      },
+      {
+        test    : /\.scss$/,
+        include : path.join(__dirname, "node_modules"),
+        use     : [
+          {
+            loader: "sass-loader",
+            options: {
+              importer: mdcStyleImporter,
+            }
+          }
+        ]
       },
     ],
   },
@@ -79,4 +99,13 @@ module.exports = {
     
     new WriteFilePlugin(),
   ],
+}
+
+function mdcStyleImporter(url) {
+  if(url.indexOf("~@material") === 0) {
+    const filePath = url.split("~@material")[1];
+    const nodeModulePath = `./node_modules/@material/${filePath}`;
+    return { file : path.resolve(nodeModulePath) };
+  }
+  return { file : url };
 }
